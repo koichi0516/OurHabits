@@ -1,0 +1,42 @@
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+
+<div class="col-xs-6">
+	<div class="profile-container">
+	<h2 class="profile-name">個人情報編集</h2>
+
+	<%= form_for(@user) do |f| %>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>名前</th>
+				<th><%= f.text_field :name, autofocus: true, class:"" %></th>
+			</tr>
+			<tr>
+				<th>名前（カナ）</th>
+				<th><%= f.text_field :name_kana, autofocus: true, class:"" %></th>
+			</tr>
+			<tr>
+				<th>ニックネーム</th>
+				<th><%= f.text_field :nickname, autofocus: true, class:"" %></th>
+			</tr>
+			<tr>
+				<th>性別</th>
+				<th><%= f.select :sex,[["男性","0"],["女性","1"]],class:"" %></th>
+			</tr>
+			<tr>
+				<th>生年月日</th>
+				<th><%= f.text_field :birth, autofocus: true, class:"" %></th>
+			</tr>
+
+<!-- プロフィール画像編集 -->
+
+
+		</tbody>
+	</table>
+	<%= f.submit "個人情報を変更する", class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+	<% end %>
+
+</div>
+</div>
