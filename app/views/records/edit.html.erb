@@ -1,0 +1,18 @@
+<h1>Records#edit</h1>
+<p>Find me in app/views/records/edit.html.erb</p>
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+
+			<%= form_for(@record, :url => {controller: "records",method: "patch",action: "update"}) do |f| %>
+				<%= f.hidden_field :date, value:@record.date %>
+				<%= f.text_field :challenge_time %><br>
+				<%= f.submit '更新する' %><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>

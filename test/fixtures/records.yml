@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_habit_id: 1
+  challenge: 1
+  challenge_time: 1
+
+two:
+  user_habit_id: 1
+  challenge: 1
+  challenge_time: 1

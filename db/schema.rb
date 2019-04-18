@@ -10,12 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_071950) do
+ActiveRecord::Schema.define(version: 2019_04_12_031035) do
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "habit_id"
+    t.string "text"
+    t.boolean "delete_flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "habits", force: :cascade do |t|
+    t.string "name"
+    t.text "sub_title"
+    t.string "back_image_id"
+    t.text "instruction_a"
+    t.string "image_a_id"
+    t.text "instruction_b"
+    t.string "image_b_id"
+    t.integer "member_number"
+    t.integer "master_number"
+    t.boolean "delete_flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "user_habit_id"
+    t.integer "challenge"
+    t.integer "challenge_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+  end
+
+  create_table "user_habits", force: :cascade do |t|
+    t.integer "habit_id"
+    t.integer "user_id"
+    t.datetime "start_at"
+    t.datetime "limit_at"
+    t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
