@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  habit_id: 1
+  user_id: 1
+  start_at: 2019-04-10 11:50:06
+  limit_at: 2019-04-10 11:50:06
+  count: 1
+
+two:
+  habit_id: 1
+  user_id: 1
+  start_at: 2019-04-10 11:50:06
+  limit_at: 2019-04-10 11:50:06
+  count: 1

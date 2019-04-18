@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  instruction: MyText
+  image: MyString
+  member_number: 1
+  master_number: 1
+  delete_flag: false
+
+two:
+  name: MyString
+  instruction: MyText
+  image: MyString
+  member_number: 1
+  master_number: 1
+  delete_flag: false

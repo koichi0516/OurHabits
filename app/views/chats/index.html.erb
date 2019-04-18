@@ -1,0 +1,49 @@
+<h1>Chats#index</h1>
+<p>Find me in app/views/chats/show.html.erb</p>
+<%= link_to @habit.name, habit_path(@habit.id) %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>トークルーム</h2>
+				<% if flash[:notice] %>
+				<p><%= flash[:notice] %></p>
+				<% end %>
+
+			<div class="col-xs-3">
+			<h3>投稿フォーム</h3>
+				<%= form_for(@chat_new, :url => {controller: "chats",method: "post",action: "create"}) do |f| %>
+				<%= f.hidden_field :user_id, value:current_user.id %>
+				<%= f.hidden_field :habit_id, value:@habit.id %>
+				<%= f.text_area :text, class:"col-xs-12" %>
+				<%= f.submit '投稿する', class:"btn btn-primary col-xs-12" %>
+				<% end %>
+			</div>
+
+			<div class="col-xs-9">
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ニックネーム</th>
+					<th>投稿日時</th>
+					<th>本文</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @chats.each do |c| %>
+				<tr>
+					<td><%= c.user.nickname %></td>
+					<td><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+					<td><%= c.text %></td>
+						<% if c.user == current_user %>
+					<td><%= link_to "編集する", edit_habit_chat_path(@habit,c.id),class:"btn-sm btn-success" %></td>
+						<% end %>
+				</tr>
+				<% end %>
+			</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>

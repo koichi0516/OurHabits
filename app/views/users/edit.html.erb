@@ -1,6 +1,7 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
-
+<div class="container">
+<div class="row">
 <div class="col-xs-6">
 	<div class="profile-container">
 	<h2 class="profile-name">個人情報編集</h2>
@@ -29,14 +30,17 @@
 				<th>生年月日</th>
 				<th><%= f.text_field :birth, autofocus: true, class:"" %></th>
 			</tr>
-
-<!-- プロフィール画像編集 -->
-
+			<tr>
+				<th>プロフィール画像</th>
+				<th><%= f.attachment_field :image %></th>
+			</tr>
 
 		</tbody>
 	</table>
 	<%= f.submit "個人情報を変更する", class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 	<% end %>
 
+</div>
+</div>
 </div>
 </div>

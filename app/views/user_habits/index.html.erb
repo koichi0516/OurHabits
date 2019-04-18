@@ -1,0 +1,34 @@
+<h1>user_habits#index</h1>
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+
+<div class="container">
+	<div class="row">
+
+
+
+		<div class="col-xs-12">
+		<h1>チャレンジ一覧</h1>
+		<%= link_to "習慣登録一覧画面", habits_path, class: "btn btn-info" %>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>チャレンジ１</th>
+					<th>チャレンジ２</th>
+					<th>チャレンジ３</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<% @user_habit.each do |user_habit| %>
+				<td><%= link_to user_habit.habit.name,user_habit_path(user_habit.id) %>
+					<%= attachment_image_tag user_habit.habit, :back_image, :fill, 230, 230,class:"habit_image" %><br>
+				</td>
+				<% end %>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>

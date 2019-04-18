@@ -1,0 +1,20 @@
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>登録日</th>
+					<th>活動日</th>
+					<th>活動時間</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @records.each do |f| %>
+			<tr>
+				<td><%= f.created_at.strftime("%Y-%m-%d %H:%M")  %></td>
+				<td><%= f.date  %></td>
+				<td><%= f.challenge_time %></td>
+				<td><%= link_to "編集する", edit_user_habit_record_path(@user_habit,f.id),class:"btn-sm btn-success" %></td>
+				<td><%= link_to "削除する", user_habit_record_path(@user_habit,f.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '削除してもよろしいですか？'} %></td>
+			</tr>
+			<% end %>
+			</tbody>
+		</table>

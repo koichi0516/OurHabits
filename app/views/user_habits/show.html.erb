@@ -1,0 +1,57 @@
+<div class="container">
+
+		<% if flash[:notice] %>
+		<p><%= flash[:notice] %></p>
+		<% end %>
+
+	<div class="row">
+
+		<div class="col-xs-3">
+			<h1><%= link_to @user_habit.habit.name, habit_path(@habit.id), class: "btn btn-success" %></h1>
+			<%= attachment_image_tag @user_habit.habit, :back_image, :fill, 230, 230,class:"habit_image" %>
+			<p>挑戦人数</p><%= @habit.member_number %>
+			<p>達成人数</p><%= @habit.master_number %><br>
+
+			<%= link_to "活動登録",new_user_habit_record_path(@user_habit.id), class: "btn btn-info" %><br>
+			<%= link_to "リスト表示・編集",user_habit_records_path(@user_habit.id), class: "btn btn-info" %><br>
+			<%= link_to "チャット",habit_chats_path(@habit.id), class: "btn btn-info" %><br>
+			<%= link_to "ランキング",rank_path(@habit.id), class: "btn btn-info" %><br>
+		</div>
+
+		<div class="col-xs-9">
+		<div id="calendar"></div>
+		</div>
+
+	</div>
+
+
+	<div class="row">
+
+	<%= column_chart @record %>
+
+	</div>
+
+	<%= link_to "挑戦を諦める", user_habit_path(@user_habit),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に挑戦を諦めますか?'} %>
+
+
+
+</div>
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'dayGrid','interaction' ],
+
+    events: `/user_habits/${gon.user_habit_id}.json`
+
+    });
+
+    calendar.render();
+});
+</script>

@@ -1,0 +1,22 @@
+<h1>Records#new</h1>
+<p>Find me in app/views/records/new.html.erb</p>
+
+
+<div class="container">
+	<div class="row">
+		<% if user_signed_in? %>
+		<div class="">
+
+			<%= form_for(@record, :url => {controller: "records",method: "post",action: "create"}) do |f| %>
+			    <%= f.hidden_field :user_habit_id, value:@record.user_habit_id %>
+				<%= f.date_field :date %>
+				<%= f.hidden_field :challenge, value:1 %>
+				<%= f.text_field :challenge_time %>
+				<%= f.submit "登録する", class:"" %>
+			<% end %>
+
+		</div>
+		<% end %>
+	</div>
+</div>
+

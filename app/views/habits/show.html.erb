@@ -1,0 +1,24 @@
+<h1>Habits#show</h1>
+<p>Find me in app/views/habits/show.html.erb</p>
+
+
+<div class="container">
+	<div class="row">
+		<% if user_signed_in? %>
+		<div class="">
+
+			<% unless UserHabit.exists?(user_id: current_user.id, habit_id: @habit.id ) %>
+
+			<%= form_for @user_habit, url: user_habits_path, method: :post do |f| %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.hidden_field :habit_id, :value => @habit.id %>
+				<!-- start_at,limit_at -->
+				<%= f.submit "チャレンジする", class:"" %>
+			<% end %>
+
+			<% end %>
+
+		</div>
+		<% end %>
+	</div>
+</div>

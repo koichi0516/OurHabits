@@ -4,11 +4,16 @@
 	<p><%= flash[:notice] %></p>
 <% end %>
 
+
+
+
+
+
 <%= link_to "個人情報を編集",edit_user_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 
 		<% if @user.id == current_user.id %>
 		<p><%= link_to "パスワード変更",class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
-		<p><%= link_to "メッセージを送る",messages_new_path,class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
+		<p><%= link_to "メッセージを送る",new_message_path,class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
 		<p><%= link_to "退会する",class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
 		<p><%= link_to "戻る",top_path,class:"btn btn-default " %></p>
 		<% end %>
