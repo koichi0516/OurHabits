@@ -1,2 +1,38 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% if flash[:notice] %>
+	<p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>ユーザ一覧</h1>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th colspan="1"></th>
+							<th>ユーザ名</th>
+							<th>利用開始日</th>
+							<th colspan="1"></th>
+						</tr>
+					</thead>
+					<tbody>
+					<% @users.each do |user| %>
+						<tr>
+							<td class="warning"><%= attachment_image_tag user,:image, :fill, 60, 60, format: 'jpeg',fallback: "no_image.jpg", :size => "60x60" %></td>
+							<td class="warning"><%= user.name %></td>
+							<td class="warning"><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+							<td class="warning"><%= link_to "ユーザ詳細",user_path(user.id),class:"click-action-mini" %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+
+			<div class="paginate">
+			<%= paginate @users %><br>
+			</div>
+
+			<%=link_to "戻る",admin_home_path,class:"click-action" %>
+
+		</div>
+	</div>
+</div>

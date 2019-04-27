@@ -4,12 +4,13 @@ class CreateHabits < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :sub_title
       t.string :back_image_id
+      t.string :subheading_a
       t.text :instruction_a
       t.string :image_a_id
+      t.string :subheading_b
       t.text :instruction_b
       t.string :image_b_id
-      t.integer :member_number
-      t.integer :master_number
+      t.string :message
       t.boolean :delete_flag
 
       t.timestamps

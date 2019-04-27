@@ -1,18 +1,18 @@
-<h1>Records#edit</h1>
-<p>Find me in app/views/records/edit.html.erb</p>
-
-
-
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="input-form">
+      		<section id="content">
 
-			<%= form_for(@record, :url => {controller: "records",method: "patch",action: "update"}) do |f| %>
+      			<h1>活動記録編集</h1>
+      			<p>活動時間（分）</p>
+				<%= form_for(@record, :url => {controller: "records",method: "patch",action: "update"}) do |f| %>
 				<%= f.hidden_field :date, value:@record.date %>
 				<%= f.text_field :challenge_time %><br>
 				<%= f.submit '更新する' %><br>
-			<% end %>
+				<br>
+				<% end %>
 
+			</section>
 		</div>
 	</div>
 </div>

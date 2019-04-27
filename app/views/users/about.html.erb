@@ -1,0 +1,169 @@
+<h1>OurHabitsについて</h1>
+<div class="container">
+
+<br>
+
+    <div class="row">
+        <div class="col-sm-12">
+          <h2>今すぐ始める「習慣化」。</h2>
+          <br>
+          <div class="top-text">
+          <p>Our Habitsでは、ランニング、読書、早起きなど、生活のプラスとなる「習慣」の定着を支援していきます。</p>
+          <p>「習慣化」は決して簡単に手に入れられるものではありませんが、毎日少しずつでも挑戦できれば必ず達成できます。</p>
+          <p>当サイトで挑戦できる「習慣」の一部を紹介します。それぞれの「習慣」にどのような効果があるのか確認してみましょう。</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="accordion">
+    <ul>
+      <li tabindex="1">
+        <div>
+          <%= link_to habit_path(1), class: "" do %>
+            <h2>RUNNNING</h2>
+            <p>Either you run the day, or the day runs you.</p>
+          <% end %>
+        </div>
+      </li>
+      <li tabindex="2">
+        <div>
+          <%= link_to habit_path(2), class: "" do %>
+            <h2>READING</h2>
+            <p>Today a reader, tomorrow a leader.</p>
+          <% end %>
+        </div>
+      </li>
+      <li tabindex="3">
+        <div>
+          <%= link_to habit_path(3), class: "" do %>
+            <h2>WAKE UP</h2>
+            <p>Wake up and be awesome.</p>
+          <% end %>
+        </div>
+      </li>
+      <li tabindex="4">
+        <div>
+          <%= link_to habit_path(6), class: "" do %>
+            <h2>STUDY</h2>
+            <p>Knowledge is power.</p>
+          <% end %>
+        </div>
+      </li>
+      <li tabindex="5">
+        <div>
+          <%= link_to habit_path(7), class: "" do %>
+            <h2>PROGRAMMING</h2>
+            <p>while(!(succeed = try()));</p>
+          <% end %>
+        </div>
+      </li>
+      <li tabindex="6">
+        <div>
+          <%= link_to habit_path(8), class: "" do %>
+            <h2>MUSCLE TRAINING</h2>
+            <p>NO PAIN. NO GAIN.</p>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+    </div>
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+
+    <div class="row">
+
+      <div class="col-xs-6">
+        <%= image_tag'block.jpg',:size => '550x370',class:"habit-image-show-1" %>
+      </div>
+
+      <div class="col-xs-6">
+        <h2>小さな達成感を積み重ねる。</h2>
+        <br>
+        <div class="top-text">
+          <p>手に入れたい、挑戦したい「習慣」を選択した後は、</p>
+          <p>その「習慣」に対して取り組むことができたか、</p>
+          <p>またどれだけの時間取り組めたかを記録していただきます。</p>
+          <p>「習慣」に対する取り組み状況をカレンダーとグラフで</p>
+          <p>視覚的に確認でき、達成感を得ることができます。</p>
+        </div>
+      </div>
+
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+
+    <div class="row">
+
+      <div class="col-sm-6">
+        <h2>競い合い、高め合う。</h2>
+        <br>
+        <div class="top-text">
+        <p></p>
+        <p>同じ「習慣」に挑戦している仲間たちが待っています。</p>
+        <p>その仲間たちと競い合える「ランキング機能」や</p>
+        <p>励まし合ったりアドバイスが聞ける「トークルーム機能」を</p>
+        <p>利用して、ともに「習慣化」を目指していきましょう。</p>
+        <p></p>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <%= image_tag'team.jpg',:size => '550x370',class:"habit-image-show-2" %>
+      </div>
+
+    </div>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<h1>新しい「自分」を手に入れよう。</h1>
+
+<br>
+
+<div class="container">
+
+  <% if user_signed_in? %>
+
+    <div class="row">
+      <div class="center">
+      <%= link_to "My Challenge", user_habits_path, class: "btn-action faa-float animated" %>
+      </div>
+    </div>
+
+  <% elsif admin_signed_in? %>
+
+  <% else %>
+<br>
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col-sm-3">
+          <%= link_to "Login",new_user_session_path,class: "btn-action faa-float animated" %>
+        </div>
+
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col-sm-3">
+          <%= link_to "Sign Up",new_user_registration_path,class: "btn-action faa-float animated" %>
+        </div>
+
+        <div class="col-sm-2">
+        </div>
+
+  <% end %>
+
+</div>
+

@@ -1,49 +1,118 @@
-<h1>Chats#index</h1>
-<p>Find me in app/views/chats/show.html.erb</p>
-<%= link_to @habit.name, habit_path(@habit.id) %>
+<% if flash[:notice] %>
+<p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
+
+<% if user_signed_in? %>
+<h1 class="theme-font"><%= link_to @habit.name, habit_path(@habit.id) %></h1>
+<% else admin_signed_in? %>
+<h1 class="theme-font"><%= link_to @habit.name, admin_habit_path(@habit.id) %></h1>
+<% end %>
+
+<h2>トークルーム</h2>
 
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h2>トークルーム</h2>
-				<% if flash[:notice] %>
-				<p><%= flash[:notice] %></p>
-				<% end %>
+
+      	<% if user_signed_in? %>
 
 			<div class="col-xs-3">
-			<h3>投稿フォーム</h3>
+				<h3>投稿フォーム</h3>
 				<%= form_for(@chat_new, :url => {controller: "chats",method: "post",action: "create"}) do |f| %>
 				<%= f.hidden_field :user_id, value:current_user.id %>
 				<%= f.hidden_field :habit_id, value:@habit.id %>
-				<%= f.text_area :text, class:"col-xs-12" %>
-				<%= f.submit '投稿する', class:"btn btn-primary col-xs-12" %>
+				<%= f.text_area :text, class:"col-xs-12", required:true %>
+				<%= f.submit '投稿する', class:"click-action" %>
 				<% end %>
 			</div>
 
-			<div class="col-xs-9">
-			<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>ニックネーム</th>
-					<th>投稿日時</th>
-					<th>本文</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @chats.each do |c| %>
-				<tr>
-					<td><%= c.user.nickname %></td>
-					<td><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-					<td><%= c.text %></td>
+			<% if @chats.exists? %>
+
+				<div class="col-xs-9">
+					<table class="table table-hover">
+
+					<thead>
+					<tr>
+						<th colspan="1"></th>
+						<th>ニックネーム</th>
+						<th>投稿日時</th>
+						<th>本文</th>
+						<th colspan="1"></th>
+					</tr>
+					</thead>
+
+					<tbody>
+					<% @chats.each do |c| %>
+					<tr>
+						<td class="warning"><%= attachment_image_tag c.user,:image, :fill, 30, 30, format: 'jpeg',fallback: "no_image.jpg", :size => "30x30" %></td>
+						<td class="warning"><%= c.user.nickname %></td>
+						<td class="warning"><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+						<td class="warning"><%= c.text %></td>
 						<% if c.user == current_user %>
-					<td><%= link_to "編集する", edit_habit_chat_path(@habit,c.id),class:"btn-sm btn-success" %></td>
+						<td class="success"><%= link_to "編集", edit_habit_chat_path(@habit,c.id),class:"click-green-mini" %></td>
 						<% end %>
-				</tr>
-				<% end %>
-			</tbody>
-			</table>
-			</div>
+					</tr>
+					<% end %>
+					</tbody>
+
+					</table>
+
+					<div class="paginate">
+					<%= paginate @chats %><br>
+					</div>
+				</div>
+
+			<% else %>
+
+			<h3>まだ投稿がありません。</h3>
+
+			<% end %>
+
+     	<% else admin_signed_in? %>
+
+     		<% if @chats.exists? %>
+
+				<table class="table table-hover">
+
+				<thead>
+					<tr>
+						<th></th>
+						<th>ニックネーム</th>
+						<th>投稿日時</th>
+						<th>本文</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @chats.each do |c| %>
+					<tr>
+						<td class="warning">
+						<%= link_to user_path(c.user_id) do %>
+						<%= attachment_image_tag c.user,:image, :fill, 30, 30, format: 'jpeg',fallback: "no_image.jpg", :size => "30x30" %></td>
+						<% end %>
+						<td class="warning"><%= c.user.nickname %></td>
+						<td class="warning"><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+						<td class="warning"><%= c.text %></td>
+						<td class="warning"><%= link_to "ユーザ詳細",  user_path(c.user_id),class:"click-action-mini" %></td>
+					</tr>
+					<% end %>
+				</tbody>
+
+				</table>
+
+				<div class="paginate">
+				<%= paginate @chats %><br>
+				</div>
+
+			<% else %>
+
+			<h3>まだ投稿がありません。</h3>
+
+			<% end %>
+
+		<% end %>
+
 		</div>
 	</div>
 </div>

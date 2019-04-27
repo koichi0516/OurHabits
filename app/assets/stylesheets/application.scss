@@ -27,14 +27,33 @@
 a {
   text-decoration: none;
 }
+a:hover {
+  text-decoration: none;
+}
+
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
 
+
+
+
+
+/*全ページ共通*/
 body {
 	background-image: url(back.jpg);
+}
+.filter{
+  height: 100%;
+  background: rgba(255,255,255,0.9);
+}
+.wrapper{
+    min-height:100vh;/*記述要*/
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
 header, nav, footer {
@@ -43,14 +62,12 @@ header, nav, footer {
 
 header {
   position: relative;
-  width: 90%;
-  padding: 15px 0;
+  height: 100px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
-  background-color: #d8a46c;
-}
-header .headline{
-  font-size: 32px;
+  background: linear-gradient( 135deg,rgba(255, 221, 40, 0.8), rgba(255, 110, 80, 0.8));
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 
 footer{
@@ -61,32 +78,28 @@ footer{
   padding: 30px 0;
   position: absolute;
   bottom: 0;
-}
-.footer-text {
-  color: #fff;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 
-/*トップ画面*/
 
-.bkRGBA{
-  height: 100%;
-  background: rgba(255,255,255,0.9);
-}
 
-.wrapper{
-    min-height: 100vh;
-    position: relative;/*←相対位置*/
-    padding-bottom: 120px;/*←footerの高さ*/
-    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-}
+
 
 /*ナビバー*/
+.logo{
+  font-size: 40px;
+  padding:  20px 20px;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+  color: white;
+}
+.logo:hover {
+  text-decoration: none;
+}
 .nav-list {
   text-align: center;
-  padding: 20px 0;
+  padding: 5px 0;
   margin: 0 auto;
 }
-
 .button{
   position: relative;
   padding: 1em 1.5em;
@@ -94,79 +107,808 @@ footer{
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  font-size: 18px;
+  font-size: 20px;
   margin: 1em 0.8em;
   display: inline-block;
 }
-
 .nav-list-item {
   list-style: none;
   display: inline-block;
-  margin: 0 30px;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  margin: 5px;
+  float: left;
+  color: white;
 }
-/*.nav-list-item::after,
-.nav-list-item::before{
-  content: '';
-  display: block;
+.nav-list-item:hover {
+  text-decoration: none;
+}
+
+
+
+
+
+/*テキスト*/
+h1, h2, p {
+  font-family:"Work Sans", serif;
+}
+h1{
+  text-align: center;
+  font-size: 50px;
+}
+h2,h3 {
+  text-align: center;
+}
+
+.top-text p{
+  font-size: 18px;
+  text-align: center;
+}
+
+.footer-text {
+  color: #fff;
+}
+
+.theme-font{
+  font-family:Chalkduster;
+}
+.theme-font:hover{
+  text-decoration: none;
+}
+
+.sign{
+  font-family: 'SignPainter',sans-serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+/*リスト、テーブル関連*/
+.table > tbody > tr > td,
+.table > thead > tr > th {
+  vertical-align: middle;
+  text-align: center;
+  font-family: serif;
+  font-size: 16px;
+}
+.paginate{
+  text-align: center;
+  margin:0 auto;
+}
+
+
+
+
+
+
+/*ボタン関連*/
+
+/*ボタンーオレンジ（レインボー）*/
+.btn-action{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  font-size: 30px;
+  font-family: Chalkduster;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.8s;
+  background-size: 200% auto;
+  color: white;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+.btn-action:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+
+
+/*ボタンー編集（緑ミニ）*/
+.click-green-mini{
+  background: rgba(255,255,255,0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid green;
+  color: #85592e;
+  cursor: pointer;
+  font: bold 12px Helvetica, Arial, sans-serif;
+  height: 30px;
+  margin: 0 auto;
+  padding: 3px 3px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  width: 100%;
+  line-height: 30px;
+  text-align: center;
+}
+.click-green-mini:hover{
+  background: #c6ecdc;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+  color: #85592e;
+  text-decoration: none;
+}
+
+/*ボタンー退会、削除（赤）*/
+/*管理人サイドのユーザの強制退会、習慣削除、*/
+.click-danger{
+  background: rgba(255,255,255,0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid red;
+  color: #85592e;
+  cursor: pointer;
+  float: left;
+  font: bold 15px Helvetica, Arial, sans-serif;
+  height: 35px;
+  margin: 20px 32px 0px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  width: 120px;
+  line-height: 30px;
+  text-align: center;
+}
+.click-danger:hover{
+  background: #ecc9c6;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+  color: #85592e;
+  text-decoration: none;
+}
+
+
+/*ボタンー退会、削除（赤ミニ）*/
+.click-danger-mini{
+  background: rgba(255,255,255,0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid red;
+  color: #85592e;
+  cursor: pointer;
+  font: bold 12px Helvetica, Arial, sans-serif;
+  height: 30px;
+  margin: 0 auto;
+  padding: 3px 3px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  width: 100%;
+  line-height: 30px;
+  text-align: center;
+}
+.click-danger-mini:hover{
+  background: #ecc9c6;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+  color: #85592e;
+  text-decoration: none;
+}
+
+
+
+
+
+
+/*ボタンー習慣メイン画面*/
+
+.btn-action-select{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  height: 60px;
+  width: 100%;
+  margin: 10px 0;
+  padding-top: 17px;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Work Sans";
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.8s;
+  background-size: 200% auto;
+  color: white;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.6);
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  background-color: orange;
+}
+
+.btn-action-select:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+
+
+
+/*ボタンー管理人indexボタン*/
+
+.click-action-mini{
+  background: rgba(255,255,255,0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  border: 1px solid #D69E31;
+  color: #85592e;
+  cursor: pointer;
+  font: bold 12px Helvetica;
+  margin: 0 auto;
+  padding: 5px 5px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  width: 80px;
+  height: 40px;
+  line-height: 30px;
+  text-align: center;
+}
+/*入力フォームーログインボタンのホバーアクション*/
+.click-action-mini:hover{
+  background: rgb(254,193,81);
+  background: -moz-linear-gradient(top,  rgba(254,193,81,1) 0%, rgba(254,231,154,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -o-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+  color: #85592e;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+/*その他調整項目*/
+
+.center{
+  margin: 0 auto;
+}
+
+
+
+/*トップ画面*/
+
+.hero{
+  position:relative;
+  height:100%;
+  width:100%;
+  background:url(top.jpg) no-repeat 50% 50% fixed;
+  background-size:100%;
+  background-position: top;
+  overflow:hidden;
+
+  h1{
+    position:relative;
+    z-index:50;
+    color:white;
+    font-size:80px;
+    font-weight:200;
+    font-family: Chalkduster;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+
+  }
+
+  h2{
+    position:relative;
+    z-index:50;
+    color:white;
+    font-size:30px;
+    font-weight:200;
+  }
+
+  &.fadeout{
+    .optional-rainbow{
+    display:block;
+    }
+    &:before{
+    display:none;
+    }
+  }
+
+  &:before{
+    display:block;
+    position:absolute;
+    height:100%;
+    width:100%;
+    z-index:5;
+    content:"";
+    background:-webkit-linear-gradient(#30f89c, #352ce6, #fc5e9d);
+    background: -moz-linear-gradient(left, #30f89c, #352ce6, #fc5e9d);
+    background:linear-gradient(#30f89c, #352ce6, #fc5e9d);
+    opacity:0.4;
+  }
+
+  &:after{
+    display:block;
+    position:absolute;
+    bottom:0;
+    left:0;
+    content:"";
+    width:100%;
+    height:6px;
+    background: -webkit-linear-gradient(left, #30f89c, #352ce6, #fc5e9d);
+    background: -moz-linear-gradient(left, #30f89c, #352ce6, #fc5e9d);
+    background: linear-gradient(left, #30f89c, #352ce6, #fc5e9d);
+
+  }
+
+  .optional-rainbow{
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: -webkit-linear-gradient(#30f89c, #352ce6, #fc5e9d);
+    background: -moz-linear-gradient(#30f89c, #352ce6, #fc5e9d);
+    background: linear-gradient(#30f89c, #352ce6, #fc5e9d);
+    opacity:0.4;
+    z-index:4;
+  }
+
+}
+
+.vertical-center{
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 60vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+/*about画面*/
+
+/*アコーディオン設定*/
+/*Accordion Height*/
+$a-height: 250px;
+/*Position text along bottom*/
+$text-offset: $a-height - 90;
+.accordion {
+  width:100%;
+  max-width:1080px;
+  height:$a-height;
+  overflow:hidden;
+  margin:50px auto;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+  ul {
+    width:100%;
+    display:table;
+    table-layout:fixed;
+    margin:0;
+    padding:0;
+    li {
+      display:table-cell;
+      vertical-align:bottom;
+      position: relative;
+      width:16.666%; // 6 into 100
+      height:$a-height;
+      background-repeat:no-repeat;
+      background-position:center center;
+      transition:all 500ms ease;
+      div {
+        display:block;
+        overflow:hidden;
+        width:100%;
+        a {
+          display:block;
+          height:$a-height;
+          width:100%;
+          position:relative;
+          z-index:3;
+          vertical-align:bottom;
+          padding:15px 20px;
+          box-sizing:border-box;
+          color:#fff;
+          text-decoration:none;
+          font-family:Open Sans, sans-serif;
+          transition:all 200ms ease;
+          * {
+            opacity:0;
+            margin:0;
+            width:100%;
+            text-overflow:ellipsis;
+            position:relative;
+            z-index:5;
+            white-space:nowrap;
+            overflow:hidden;
+            -webkit-transform:translateX(-20px);
+            transform:translateX(-20px);
+            -webkit-transition:all 400ms ease;
+            transition:all 400ms ease;
+          }
+          h2 {
+            font-family:Montserrat,sans-serif;
+            text-overflow:clip;
+            font-size:24px;
+            text-transform:uppercase;
+            margin-bottom:2px;
+            top:$text-offset;
+            color: #f5f5f5;
+          }
+          p {
+            top:$text-offset;
+            font-size:13.5px;
+            font-family:Montserrat,sans-serif;
+            color: #fffaf0;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+/*Background images*/
+    li:nth-child(1) { background-image:url(1.jpg); }
+    li:nth-child(2) { background-image:url(2.jpg); }
+    li:nth-child(3) { background-image:url(3.jpg); }
+    li:nth-child(4) { background-image:url(4.jpg); }
+    li:nth-child(5) { background-image:url(5.jpg); }
+    li:nth-child(6) { background-image:url(6.jpg); }
+    &:hover li,
+    &:focus-within li { width:8%; }
+    li:focus {
+      outline: none;
+    }
+    &:hover li:hover,
+/*allow users to tab through active slides*/
+    li:focus,
+    &:focus-within li:focus {
+      width:60%;
+      a {
+        background:rgba(0,0,0,.4);
+        * {
+          opacity:1;
+          -webkit-transform:translateX(0);
+          transform:translateX(0);
+        }
+      }
+    }
+    &:hover li {
+      width: 8% !important;
+      a * { opacity: 0 !important; }
+    }
+    &:hover li:hover {
+      width:60% !important;
+      a {
+        background:rgba(0,0,0,.4);
+        * {
+          opacity:1 !important;
+          -webkit-transform:translateX(0);
+          transform:translateX(0);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+/*入力および詳細フォーム画面(ログイン、投稿、詳細画面にて使用)*/
+/*ベースはログインフォーム*/
+.input-form {
+  margin: 25px auto;
+  position: relative;
+  width: 900px;
+  height: 100%;
+}
+/*入力フォームー形成*/
+#content {
+  background: #f9f9f9;
+  background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  background: -o-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  background: linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#f9f9f9',GradientType=0 );
+  -webkit-box-shadow: 0 1px 0 #fff inset;
+  -moz-box-shadow: 0 1px 0 #fff inset;
+  -ms-box-shadow: 0 1px 0 #fff inset;
+  -o-box-shadow: 0 1px 0 #fff inset;
+  box-shadow: 0 1px 0 #fff inset;
+  border: 1px solid #c4c6ca;
+  margin: 0 auto;
+  padding: 25px 0 0;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  width: 400px;
+  height: 100%;
+}
+/*入力フォームータイトルのフォント*/
+#content h1 {
+  color: #7E7E7E;
+  font: bold 25px Helvetica, Arial, sans-serif;
+  letter-spacing: -0.05em;
+  line-height: 20px;
+  margin: 10px 0 30px;
+}
+/*入力フォームータイトルの横のライン*/
+#content h1:before,
+#content h1:after {
+  content: "";
+  height: 1px;
   position: absolute;
-  width: 20%;
-  height: 20%;
-  border: 2px solid;
-  transition: all 0.6s ease;
-  border-radius: 2px;
+  top: 10px;
+  width: 27%;
 }
-
-.nav-list-item::after{
-  bottom: 0;
-  right: 0;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  border-bottom-color: #435a6b;
-  border-right-color: #435a6b;
+#content h1:after {
+  background: rgb(126,126,126);
+  background: -moz-linear-gradient(left,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
+  background: -webkit-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  background: linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  height: 60px;
+    right: 0;
 }
-
-.nav-list-item::before{
+#content h1:before {
+  background: rgb(126,126,126);
+  background: -moz-linear-gradient(right,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
+  background: -webkit-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  background: linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
+  height: 60px;
+    left: 0;
+}
+/*入力フォームー背景の描写*/
+#content:after,
+#content:before {
+  background: #f9f9f9;
+  background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  background: -o-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  background: linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#f9f9f9',GradientType=0 );
+  border: 1px solid #c4c6ca;
+  content: "";
+  display: block;
+  height: 100%;
+  left: -1px;
+  position: absolute;
+  width: 100%;
+}
+#content:after {
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
   top: 0;
-  left: 0;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-  border-top-color: #435a6b;
-  border-left-color: #435a6b;
+  z-index: -1;
+}
+#content:before {
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  top: 0;
+  z-index: -2;
+}
+/*入力フォームー枠の装飾*/
+#content [type="text"],
+#content [type="email"],
+#content [type="password"] {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+  -moz-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+  -ms-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+  -o-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+  box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background: #eae7e7 url(https://cssdeck.com/uploads/media/items/8/8bcLQqF.png) no-repeat;
+  border: 1px solid #c8c8c8;
+  color: #777;
+  font: 13px Helvetica, Arial, sans-serif;
+  margin: 0 0 10px;
+  padding: 15px 10px 15px 40px;
+  width: 80%;
+}
+/*入力フォームーsubmitボタンの装飾*/
+#content [type="submit"] {
+  background: rgb(254,231,154);
+  background: -moz-linear-gradient(top,  rgba(254,231,154,1) 0%, rgba(254,193,81,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+  background: -o-linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+  background: linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  border: 1px solid #D69E31;
+  color: #85592e;
+  cursor: pointer;
+  font: bold 15px Helvetica, Arial, sans-serif;
+  height: 35px;
+  width: 300px;
+  margin: 10px 49px;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+/*入力フォームーログインボタンのホバーアクション*/
+#content [type="submit"]:hover {
+  background: rgb(254,193,81);
+  background: -moz-linear-gradient(top,  rgba(254,193,81,1) 0%, rgba(254,231,154,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -o-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+}
+/*入力フォームーsubmitボタンの装飾*/
+/*signup、signinだけでなく、管理人サイドの習慣編集、習慣追加、各戻るボタンにも使用。*/
+.click-action{
+  background: rgba(255,255,255,0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #D69E31;
+  color: #85592e;
+  cursor: pointer;
+  float: left;
+  font: bold 15px Helvetica, Arial, sans-serif;
+  height: 35px;
+  margin: 20px 32px 0px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  width: 120px;
+  line-height: 30px;
+  text-align: center;
+}
+/*入力フォームーログインボタンのホバーアクション*/
+.click-action:hover{
+  background: rgb(254,193,81);
+  background: -moz-linear-gradient(top,  rgba(254,193,81,1) 0%, rgba(254,231,154,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -o-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+  color: #85592e;
+  text-decoration: none;
 }
 
 
-.nav-list-item:hover:after,
-.nav-list-item:hover:before{
-   border-bottom-color: #435a6b;
-   border-right-color: #435a6b;
-   border-top-color: #435a6b;
-   border-left-color: #435a6b;
-   width: 100%;
-   height: 100%;
-}
-*/
 
-/*ログイン画面*/
+
+
+
+
+
+
+/*ログイン後画面*/
+
+.habit_box {
+  font-family: Chalkduster;
+  float: left;
+  font-size: 40px;
+  text-align: center;
+  margin: 2px 2px;
+  width: 100%;
+}
+
+
+
+
 
 
 /*習慣選択画面*/
-.habit_box {
+.habit_box_index {
   font-family: Chalkduster;
   float: left;
   font-size: 20px;
   text-align: center;
-  margin: 2px 2px;
+  margin: 10px 2px;
+  width: 230px;
 }
 
-/*.habit_image{
-  position: relative;
+.habit_name{
+  margin-top: 5px;
+}
+
+.ib{
   display: inline-block;
-  border-radius: 20%;
-}*/
+}
+
+.iba{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+
+.habit_image_main{
+display: inline-block;
+position: relative;
+width: 100%;
+box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+}
 
 .habit_image {
 display: inline-block;
 position: relative;
+box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+border-radius: 5px;
 }
 
 .habit_image::after {
@@ -181,30 +923,155 @@ box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5),
             inset 0 0 100px rgba(0, 0, 0, 0.2);
 }
 
+
+
+
+
+/*習慣紹介画面*/
+
+.habit-image-show-1{
+  display: inline-block;
+  position: relative;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border: 5px solid;
+  border-color: white;
+  transform: rotate(-2deg);
+}
+
+.habit-image-show-2{
+  display: inline-block;
+  position: relative;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border: 5px solid;
+  border-color: white;
+  transform: rotate(3deg);
+}
+
+.main-select{
+  height: 200px;
+  width:100%;
+}
+
+
+
+
+
+
 /*カレンダー機能*/
 #calendar{
 	background-color: #fec;
   width: 800px;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  padding: 5px;
 }
-
 .fc-day-number{
 	font-size: 20px;
 }
-
-.fc-sat { color: blue; }
-.fc-sun { color: red; }
-
+.fc-sat .fc-day-number{
+  color: blue;
+}
+.fc-sun .fc-day-number{
+ color: red;
+}
+.fc-event {
+  background-color: orange;
+  border-style: none;
+  border-radius: 20px;
+}
 .fc-content {
   height: 50px ;
-  background-color: #c6d5ec;
-
+  background: linear-gradient( 135deg,rgba(255, 221, 40, 0.8), rgba(255, 110, 80, 0.8));
+  text-align: center;
+  width:100%;
+  border-radius: 20px;
+  border-style: none;
 }
 .fc-title {
   font-size: 40px;
   font-family: Chalkduster;
-  text-align: center;
+}
+.fc-left {
+  font-size: 25px;
+}
+.fc-button {
+  background-color:#edc282;
 }
 
-.fc-sun {
-  color: red;
+
+
+
+
+
+
+
+/*マイページ*/
+
+.user_image{
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+.click-mypage{
+  background: rgba(255,255,255,0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -ms-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  -o-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #D69E31;
+  color: #85592e;
+  cursor: pointer;
+  float: left;
+  font: bold 15px Helvetica, Arial, sans-serif;
+  height: 35px;
+  height: 35px;
+  margin: 20px 60px 0px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  width: 60%;
+  line-height: 30px;
+  text-align: center;
+  display:inline-block;
+}
+
+/*ログインーログインボタンのホバーアクション*/
+.click-mypage:hover{
+  background: rgb(254,193,81);
+  background: -moz-linear-gradient(top,  rgba(254,193,81,1) 0%, rgba(254,231,154,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -o-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
+  color: #85592e;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*管理人サイド*/
+
+.admin_menu{
+  padding: 5px 80px;
+}
+
+
+.admin_menu_icon{
+  width:100%;
+  height:200px;
+  padding-top: 30px;
 }

@@ -1,19 +1,62 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
 <% if flash[:notice] %>
-	<p><%= flash[:notice] %></p>
+	<p class="alert alert-warning"><%= flash[:notice] %></p>
 <% end %>
 
+<h1>My Page</h1>
 
+<div class="container">
+	<div class="row">
+		<div class="input-form">
+	    	<section id="content">
 
+				<h1>My Profile</h1>
 
+					<%= link_to user_path(@user.id) do %>
+						<%= attachment_image_tag @user,:image, :fill, 250, 250, format: 'jpeg',fallback: "no_image.jpg", :size => "250x250" %>
+					<% end %>
+					<h3>ユーザ名</h3>
+						<p><%= @user.name %></p>
+					<h3>カナ</h3>
+						<p><%= @user.name_kana %></p>
+					<h3>ニックネーム</h3>
+						<p><%= @user.nickname %></p>
+					<h3>性別</h3>
+						<p>
+						<% if @user.sex == 0 %>
+						男性
+						<% else %>
+						女性
+						<% end %>
+						</p>
+					<h3>生年月日</h3>
+						<p><%= @user.birth.to_s[0..3] %>年<%= @user.birth.to_s[4..5] %>月<%= @user.birth.to_s[6..7] %>日</p>
 
+					<br>
 
-<%= link_to "個人情報を編集",edit_user_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+			</section>
+		</div>
+	</div>
 
-		<% if @user.id == current_user.id %>
-		<p><%= link_to "パスワード変更",class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
-		<p><%= link_to "メッセージを送る",new_message_path,class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
-		<p><%= link_to "退会する",class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
-		<p><%= link_to "戻る",top_path,class:"btn btn-default " %></p>
-		<% end %>
+	<br>
+	<br>
+	<br>
+
+	<% if @user.id == current_user.id %>
+
+	<div class="row">
+		<div class="col-lg-4">
+		<%= link_to "個人情報を編集",edit_user_path(@user),class:"click-mypage" %>
+		</div>
+
+		<div class="col-lg-4">
+		<%= link_to "メッセージを送る",new_message_path,class:"click-mypage" %>
+		</div>
+
+		<div class="col-lg-4">
+		<%= link_to "戻る",user_habits_path,class:"click-mypage" %>
+		</div>
+	</div>
+
+	<% end %>
+
+</div>

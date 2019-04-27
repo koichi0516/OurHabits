@@ -1,66 +1,109 @@
-<h1>records#rank</h1>
+<h1 class="theme-font"><%= @habit.name %></h1>
 
-
+<h2>ランキング</h2>
 
 <div class="container">
-	<div class="row">
-		<div class="col-xs-6">
+
+	<% if @my_rank_date.nil? && @my_rank_time.nil? %>
+
+
+		<div class="row">
+			<div class="col-xs-6">
+				<h2>あなたの達成日数</h2>
+			</div>
+			<div class="col-xs-6">
+				<h2>あなたの達成記録</h2>
+			</div>
+			<div class="col-xs-12">
+				<h3>まだ登録がありません。</h3>
+			</div>
+		</div>
+
+		<br>
+
+	<% else %>
+
+
+		<div class="row">
+			<div class="col-xs-6">
 			<h2>あなたの達成日数</h2>
-		</div>
-		<div class="col-xs-6">
+				<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td class="warning"><%= @ranks[@my_rank-1] %>位</td>
+						<td class="warning"><%= attachment_image_tag current_user,:image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg", :size => "100x100" %></td>
+						<td class="warning"><%= @my_rank_date %>日</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
+
+			<div class="col-xs-6">
 			<h2>あなたの達成記録</h2>
+				<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td class="warning"><%= @time_ranks[@my_time_rank-1] %>位</td>
+						<td class="warning"><%= attachment_image_tag current_user,:image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg", :size => "100x100" %></td>
+						<td class="warning"><%= @my_rank_time/60 %>時間</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
 
+	<% end %>
 
+		<div class="row">
 
-	<div class="row">
-		<div class="col-xs-6">
+			<div class="col-xs-6">
 			<h2>達成日数ランキング</h2>
-			<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>順位</th>
-					<th></th>
-					<th>ユーザ名</th>
-					<th>記録</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @challenge_ranks.each.with_index(1) do |a, i| %>
-				<tr>
-					<td><%= i %></td>
-					<td><%= attachment_image_tag a.first.user.image,:image, :fill, 20, 20, format: 'jpeg',fallback: "no_image.jpg", :size => "20x20" %></td>
-					<td><%= a.first.user.nickname %></td>
-					<td><%= a.last %></td>
-				</tr>
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>順位</th>
+						<th></th>
+						<th>ユーザ名</th>
+						<th>記録</th>
+					</tr>
+				</thead>
+				<tbody>
+				<% @challenge_ranks.first(50).each.with_index do |a, i| %>
+					<tr>
+						<td class="warning"><%= @ranks[i] %>位</td>
+						<td class="warning"><%= attachment_image_tag a.first.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "no_image.jpg", :size => "60x60" %></td>
+						<td class="warning"><%= a.first.user.nickname %></td>
+						<td class="warning"><%= a.last %>日</td>
+					</tr>
 				<% end %>
-			</tbody>
-			</table>
-		</div>
-		<div class="col-xs-6">
-			<h2>達成記録ランキング</h2>
-			<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>順位</th>
-					<th></th>
-					<th>ユーザ名</th>
-					<th>記録</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @challenge_time_ranks.each.with_index(1) do |b, i| %>
+				</tbody>
+				</table>
+			</div>
 
-				<tr>
-					<td><%= i %></td>
-					<td><%= attachment_image_tag b.first.user.image,:image, :fill, 20, 20, format: 'jpeg',fallback: "no_image.jpg", :size => "20x20" %></td>
-					<td><%= b.first.user.nickname %></td>
-					<td><%= b.last %></td>
-				</tr>
+			<div class="col-xs-6">
+			<h2>達成記録ランキング</h2>
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>順位</th>
+						<th></th>
+						<th>ユーザ名</th>
+						<th>記録</th>
+					</tr>
+				</thead>
+				<tbody>
+				<% @challenge_time_ranks.first(50).each.with_index do |b, i| %>
+					<tr>
+						<td class="warning"><%= @time_ranks[i] %>位</td>
+						<td class="warning"><%= attachment_image_tag b.first.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "no_image.jpg", :size => "60x60" %></td>
+						<td class="warning"><%= b.first.user.nickname %></td>
+						<td class="warning"><%= b.last/60 %>時間</td>
+					</tr>
 				<% end %>
-			</tbody>
-			</table>
+				</tbody>
+				</table>
+			</div>
+
 		</div>
-	</div>
+
 </div>
