@@ -31,7 +31,7 @@
 				<tbody>
 					<tr>
 						<td class="warning"><%= @ranks[@my_rank-1] %>位</td>
-						<td class="warning"><%= attachment_image_tag current_user,:image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg", :size => "100x100" %></td>
+						<td class="warning"><%= attachment_image_tag current_user,:image, :fill, 100, 100, format: 'jpeg',fallback: "/images/no_image.jpg", :size => "100x100" %></td>
 						<td class="warning"><%= @my_rank_date %>日</td>
 					</tr>
 				</tbody>
@@ -44,7 +44,7 @@
 				<tbody>
 					<tr>
 						<td class="warning"><%= @time_ranks[@my_time_rank-1] %>位</td>
-						<td class="warning"><%= attachment_image_tag current_user,:image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg", :size => "100x100" %></td>
+						<td class="warning"><%= attachment_image_tag current_user,:image, :fill, 100, 100, format: 'jpeg',fallback: "/images/no_image.jpg", :size => "100x100" %></td>
 						<td class="warning"><%= @my_rank_time/60 %>時間</td>
 					</tr>
 				</tbody>
@@ -71,7 +71,7 @@
 				<% @challenge_ranks.first(50).each.with_index do |a, i| %>
 					<tr>
 						<td class="warning"><%= @ranks[i] %>位</td>
-						<td class="warning"><%= attachment_image_tag a.first.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "no_image.jpg", :size => "60x60" %></td>
+						<td class="warning"><%= attachment_image_tag a.first.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "/images/no_image.jpg", :size => "60x60" %></td>
 						<td class="warning"><%= a.first.user.nickname %></td>
 						<td class="warning"><%= a.last %>日</td>
 					</tr>
@@ -95,7 +95,7 @@
 				<% @challenge_time_ranks.first(50).each.with_index do |b, i| %>
 					<tr>
 						<td class="warning"><%= @time_ranks[i] %>位</td>
-						<td class="warning"><%= attachment_image_tag b.first.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "no_image.jpg", :size => "60x60" %></td>
+						<td class="warning"><%= attachment_image_tag b.first.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "/images/no_image.jpg", :size => "60x60" %></td>
 						<td class="warning"><%= b.first.user.nickname %></td>
 						<td class="warning"><%= b.last/60 %>時間</td>
 					</tr>

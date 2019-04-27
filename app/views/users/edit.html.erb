@@ -31,7 +31,7 @@
 						</tr>
 						<tr>
 							<th>プロフィール<br>画像</th>
-							<th><%= attachment_image_tag @user,:image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg", :size => "100x100" %><%= f.attachment_field :image %></th>
+							<th><%= attachment_image_tag @user,:image, :fill, 100, 100, format: 'jpeg',fallback: "/images/no_image.jpg", :size => "100x100" %><%= f.attachment_field :image %></th>
 						</tr>
 					</tbody>
 				</table>

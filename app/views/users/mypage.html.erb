@@ -12,7 +12,7 @@
 				<h1>My Profile</h1>
 
 					<%= link_to user_path(@user.id) do %>
-						<%= attachment_image_tag @user,:image, :fill, 250, 250, format: 'jpeg',fallback: "no_image.jpg", :size => "250x250" %>
+						<%= attachment_image_tag @user,:image, :fill, 250, 250, format: 'jpeg',fallback: "/images/no_image.jpg", :size => "250x250" %>
 					<% end %>
 					<h3>ユーザ名</h3>
 						<p><%= @user.name %></p>
