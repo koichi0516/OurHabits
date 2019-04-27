@@ -16,7 +16,7 @@
 				<tbody>
 				<% @messages.each do |message| %>
 					<tr>
-						<td class="warning"><%= attachment_image_tag message.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "no_image.jpg", :size => "60x60" %></td>
+						<td class="warning"><%= attachment_image_tag message.user,:image, :fill, 60, 60, format: 'jpeg',fallback: "/images/no_image.jpg", :size => "60x60" %></td>
 						<td class="warning"><%= message.user.name %></td>
 						<td class="warning"><%= message.title %></td>
 						<td class="warning"><%= link_to "メッセージ詳細",message_path(message.id),class:"click-action-mini" %>
