@@ -1,16 +1,9 @@
 class ChatsController < ApplicationController
-  def room
-  end
 
   def index
-    @chats = Chat.where(habit_id: params[:habit_id])
+    @chats = Chat.where(habit_id: params[:habit_id]).page(params[:page])
     @chat_new = Chat.new
     @habit = Habit.find(params[:habit_id])
-  end
-
-  def show
-    @chat = Chat.find(params[:id])
-
   end
 
   def create
@@ -23,7 +16,7 @@ class ChatsController < ApplicationController
   def edit
     @chat = Chat.find(params[:id])
     if @chat.user_id != current_user.id
-       flash[:notice] = "編集する権限がありません。"
+       flash[:notice] = "アクセスする権限がありません。"
        redirect_to habit_chats_path(@chat.habit_id)
     end
   end
@@ -40,6 +33,12 @@ class ChatsController < ApplicationController
     @chat.destroy
     flash[:notice] = "投稿を削除しました。"
     redirect_to habit_chats_path(@chat.habit_id)
+  end
+
+# 管理人サイド
+
+  def admin_index
+    @habits = Habit.all
   end
 
   private

@@ -1,0 +1,65 @@
+<h1>習慣を追加</h1>
+
+<div class="container">
+	<div class="row">
+		<div class="input-form">
+      		<section id="content">
+
+			<%= form_for(@habit) do |f| %>
+
+			<div class="field row">
+			<lavel>習慣名</lavel><br>
+			<%= f.text_field :name, class:"", required:true  %>
+			</div>
+
+			<div class="field row">
+			<lavel>サブタイトル</lavel><br>
+			<%= f.text_field :sub_title, class:"", required:true  %>
+			</div>
+
+			<div class="field row">
+			<label>トップ画像</label><br>
+			<%= f.attachment_field :back_image, class:"center", required:true  %>
+			</div>
+
+			<div class="field row">
+			<lavel>小見出し１</lavel><br>
+			<%= f.text_field :subheading_a, class:"", required:true  %>
+			</div>
+
+			<div class="field row">
+			<lavel>習慣紹介１</lavel><br>
+			<%= f.text_area :instruction_a, size: "50x20", required:true  %>
+			</div>
+
+			<div class="field row">
+			<label>習慣紹介画像１</label><br>
+			<%= f.attachment_field :image_a, class:"center", required:true  %>
+			</div>
+
+			<div class="field row">
+			<lavel>小見出し２</lavel><br>
+			<%= f.text_field :subheading_b, class:"", required:true  %>
+			</div>
+
+			<div class="field row">
+			<lavel>習慣紹介２</lavel><br>
+			<%= f.text_area :instruction_b, class:"", size: "50x20", required:true  %>
+			</div>
+
+			<div class="field row">
+			<label>習慣紹介画像２</label><br>
+			<%= f.attachment_field :image_b, class:"center", required:true  %>
+			</div>
+
+			<div class="action row">
+			<%= f.submit '習慣を追加する', class:"" %>
+			</div>
+
+			<% end %>
+
+			</section>
+		</div>
+	</div>
+</div>
+

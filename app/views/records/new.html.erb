@@ -1,22 +1,38 @@
-<h1>Records#new</h1>
-<p>Find me in app/views/records/new.html.erb</p>
-
+<% if flash[:notice] %>
+	<p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
 
 <div class="container">
 	<div class="row">
-		<% if user_signed_in? %>
-		<div class="">
+		<div class="input-form">
+	    	<section id="content">
 
-			<%= form_for(@record, :url => {controller: "records",method: "post",action: "create"}) do |f| %>
-			    <%= f.hidden_field :user_habit_id, value:@record.user_habit_id %>
-				<%= f.date_field :date %>
-				<%= f.hidden_field :challenge, value:1 %>
-				<%= f.text_field :challenge_time %>
-				<%= f.submit "登録する", class:"" %>
-			<% end %>
+				<h1>活動記録入力</h1>
 
+				<% if user_signed_in? %>
+
+					<div>
+					<%= form_for(@record, :url => {controller: "records",method: "post",action: "create"}) do |f| %>
+			    	<%= f.hidden_field :user_habit_id, value:@record.user_habit_id %>
+
+				    <p>活動日</p>
+					<%= f.date_field :date, required:true %>
+
+					<%= f.hidden_field :challenge, value:1 %>
+
+					<br>
+
+					<p>活動時間</p>
+					<%= f.text_field :challenge_time, required:true %>分
+
+					<%= f.submit "登録する", class:"" %><br>
+					<% end %>
+
+					</div>
+				<% end %>
+
+			</section>
 		</div>
-		<% end %>
 	</div>
 </div>
 

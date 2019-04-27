@@ -1,56 +1,70 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-    <title>Habits</title>
+    <title>OurHabits</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= include_gon %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
   </head>
 
   <body>
-    <div class="bkRGBA wrapper">
-    <header>
-    <h1 class="headline">
-      <%= link_to "Our Habits",top_path,class: "" %></li>
-    </h1>
-  </header>
+    <div class="filter wrapper">
 
-  <nav>
-    <ul class="nav-list">
+    <header>
+
+    <nav class="logo navbar-nav navbar-left text-muted">
+      <%= link_to "Our Habits",top_path,class: "logo" %></li>
+    </nav>
+
+    <nav>
+    <ul class="nav-list navbar-right text-muted">
 
       <% if user_signed_in? %>
 
+        <li class="nav-list-item button">
+        <%= link_to "My Challenge",user_habits_path,class: "nav-list-item" %></li>
+
+        <li class="nav-list-item button">
+        <%= link_to "About",users_about_path,class: "nav-list-item" %></li>
+
+        <li class="nav-list-item button">
+        <%= link_to "Logout",destroy_user_session_path, method: :delete, class: "nav-list-item" %></li>
+
+      <% elsif admin_signed_in? %>
+
       <li class="nav-list-item button">
-      <%= link_to "Home",user_habits_path,class: "" %></li>
+      <%= link_to "Top",admin_home_path, class: "nav-list-item" %></li>
+
       <li class="nav-list-item button">
-      <%= link_to "About",users_about_path,class: "" %></li>
-      <li class="nav-list-item button">
-      <%= link_to "My Page",mypage_path(current_user.id), class: "" %></li>
-      <li class="nav-list-item button">
-      <%= link_to "Logout",destroy_user_session_path, method: :delete, class: "" %></li>
+      <%= link_to "Logout",destroy_admin_session_path, method: :delete, class: "nav-list-item" %></li>
 
       <% else %>
 
       <li class="nav-list-item button">
-      <%= link_to "About",users_about_path,class: "" %></li>
+      <%= link_to "About",users_about_path,class: "nav-list-item" %></li>
+
       <li class="nav-list-item button">
-      <%= link_to "Login",new_user_session_path,class: "" %></li>
+      <%= link_to "Login",new_user_session_path,class: "nav-list-item" %></li>
 
       <% end %>
 
     </ul>
-  </nav>
+    </nav>
 
+    </header>
 
-    <%= yield %>
+        <%= yield %>
 
     <footer class="footer">
-    <p class="footer-text">© All rights recerved by Infratop.Inc.</p>
+      <p class="footer-text">© All rights recerved by KDK Ltd.</p>
     </footer>
-  </div>
+
+    </div>
+
   </body>
 </html>

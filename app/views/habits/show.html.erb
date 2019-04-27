@@ -1,24 +1,93 @@
-<h1>Habits#show</h1>
-<p>Find me in app/views/habits/show.html.erb</p>
+<h1 class="theme-font"><%= @habit.name %></h1>
+<%= attachment_image_tag @habit, :back_image, :fill, 1200, 450,class:"habit_image_main " %>
 
+<br>
+
+<p class="sign"><%= @habit.sub_title %></p>
+
+<br>
+<br>
+<br>
 
 <div class="container">
-	<div class="row">
+    <div class="row">
+
+        <div class="col-xs-6 article-left">
+          <%= attachment_image_tag @habit, :image_a, :fill, 550, 370,class:"habit-image-show-1" %>
+        </div>
+
+        <div class="col-xs-6 article-right top-text">
+          <h2><%= @habit.subheading_a %></h2>
+          <p><%= @habit.instruction_a %></p>
+        </div>
+
+    </div>
+
+<br>
+<br>
+
+    <div class="row">
+
+        <div class="col-sm-6 article-left top-text">
+          <h2><%= @habit.subheading_b %></h2>
+          <p><%= @habit.instruction_b %></p>
+        </div>
+
+        <div class="col-sm-6 article-right">
+          <%= attachment_image_tag @habit, :image_b, :fill, 580, 385,class:"habit-image-show-2" %>
+        </div>
+
+    </div>
+
+<br>
+<br>
+
+    <div class="row">
+
 		<% if user_signed_in? %>
-		<div class="">
 
-			<% unless UserHabit.exists?(user_id: current_user.id, habit_id: @habit.id ) %>
+			<div class="col-lg-4">
+			</div>
 
-			<%= form_for @user_habit, url: user_habits_path, method: :post do |f| %>
-				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.hidden_field :habit_id, :value => @habit.id %>
-				<!-- start_at,limit_at -->
-				<%= f.submit "チャレンジする", class:"" %>
-			<% end %>
+			<div class="col-lg-4">
+			  <% unless UserHabit.exists?(user_id: current_user.id, habit_id: @habit.id ) %>
 
-			<% end %>
+				  <%= form_for @user_habit, url: user_habits_path, method: :post do |f| %>
+				  <%= f.hidden_field :user_id, :value => current_user.id %>
+				  <%= f.hidden_field :habit_id, :value => @habit.id %>
+				  <%= f.submit "Let's Challenge!", class:"btn-action faa-float animated" %>
+				  <% end %>
 
-		</div>
+        <% else %>
+
+          <%= link_to "Back",user_habit_path(user_id: current_user.id, habit_id: @habit.id ),class:"btn-action" %>
+
+			  <% end %>
+
+			</div>
+
+			<div class="col-lg-4">
+			</div>
+
+		<% else %>
+
+			<div class="col-sm-2">
+      </div>
+
+      <div class="col-sm-3">
+        <%= link_to "Login",new_user_session_path,class: "btn-action" %>
+      </div>
+
+      <div class="col-sm-2">
+    	</div>
+
+    	<div class="col-sm-3">
+      	<%= link_to "Sign Up",new_user_registration_path,class: "btn-action" %>
+    	</div>
+
+    	<div class="col-sm-2">
+    	</div>
+
 		<% end %>
 	</div>
 </div>

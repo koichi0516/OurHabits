@@ -1,0 +1,28 @@
+<% if flash[:notice] %>
+  <p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
+
+<h1>管理人画面</h1>
+
+<div class="container">
+	<div class="row">
+
+		<div class="admin_menu col-xs-6">
+			<%= link_to "", users_path, class: "btn btn-info admin_menu_icon fas fa-users fa-8x" %>
+			<h2>ユーザ管理</h2>
+		</div>
+		<div class="admin_menu col-xs-6">
+			<%= link_to "", admin_habits_path, class: "btn btn-info admin_menu_icon fas fa-walking fa-8x" %>
+			<h2>習慣管理</h2>
+		</div>
+		<div class="admin_menu col-xs-6">
+			<%= link_to "", messages_path, class: "btn btn-info admin_menu_icon fas fa-envelope fa-8x" %>
+			<h2>メッセージ管理</h2>
+		</div>
+		<div class="admin_menu col-xs-6">
+			<%= link_to "", admin_chats_path, class: "btn btn-info admin_menu_icon fas fa-comments fa-8x" %>
+			<h2>トークルーム管理</h2>
+		</div>
+
+	</div>
+</div>

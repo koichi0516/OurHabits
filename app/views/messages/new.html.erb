@@ -1,26 +1,32 @@
-<h1>Messages#new</h1>
-
 <div class="container">
 	<div class="row">
+		<div class="input-form">
+      		<section id="content">
 
-		<h1>でんしょばと</h1>
+				<h1>Message</h1>
+					<p>OurHabitsをご利用いただき、誠にありがとうございます。</p>
+					<p>こちらでは、当サイトに関するご意見を募集しています。</p>
+					<p>いただいたご意見は今後サイト運営・改善に役立てていけるよう参考にさせていただきます。</p>
 
-			<%= form_for(@message) do |f| %>
+				<%= form_for(@message) do |f| %>
 
-				<div class="field row">
-					<lavel>件名</lavel>
-					<%= f.text_field :title %>
-				</div>
+					<div class="field row">
+						<lavel>件名</lavel><br>
+						<%= f.text_field :title, required:true %>
+					</div>
 
-				<div class="field row">
-					<lavel>本文</lavel>
-					<%= f.text_area :body %>
-				</div>
+					<div class="field row">
+						<lavel>本文</lavel><br>
+						<%= f.text_area :body, size: "50x20", required:true %>
+					</div>
 
-				<div class="action row">
-					<%= f.submit 'メッセージを送る', class:"" %>
-				</div>
-			<% end %>
+					<div class="action row">
+						<%= f.submit 'メッセージを送る', class:"" %>
+					</div>
 
+				<% end %>
+
+			</section>
+		</div>
 	</div>
 </div>

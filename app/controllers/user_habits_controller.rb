@@ -14,6 +14,15 @@ class UserHabitsController < ApplicationController
   def show
     @user_habit = UserHabit.find(params[:id])
     @habit = Habit.find(@user_habit.habit.id)
+
+    if @user_habit.user_id != current_user.id
+          flash[:notice] = "アクセスする権限がありません。"
+          redirect_to user_habits_path
+    end
+# サイドバー表示
+    @user_all = UserHabit.where(habit_id: @habit).all.count
+    @my_ranks = @user_habit.records.count
+    @my_time_ranks = @user_habit.records.sum(:challenge_time)
 # グラフ表示
     record = @user_habit.records.map{|r| [r.date.to_s,r.challenge_time]}
     @record = record.sort_by(&:first)
@@ -27,13 +36,6 @@ class UserHabitsController < ApplicationController
     @user_habit.destroy
     flash[:notice] = "習慣が削除されました。"
     redirect_to user_habits_path
-  end
-
-  def edit
-
-  end
-
-  def update
   end
 
   private

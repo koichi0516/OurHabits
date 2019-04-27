@@ -9,23 +9,19 @@ class MessagesController < ApplicationController
   	@message = Message.new(message_params)
     @message.user_id = current_user.id
   	@message.save
-  	flash[:notice] = "Message was successfully sent."
+  	flash[:notice] = "メッセージを送信しました。"
   	redirect_to mypage_path(current_user.id)
   end
 
 # 管理人サイド
 
   def index
-    @messages = Message.search(params[:search])
-    render layout: false
+    @messages = Message.page(params[:page])
   end
 
   def show
     @message = Message.find(params[:id])
-    @user = User.find(@message.user_id)
-    render layout: false
   end
-
 
   	private
 		def message_params

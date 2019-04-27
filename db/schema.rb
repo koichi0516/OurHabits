@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_031035) do
+ActiveRecord::Schema.define(version: 2019_04_18_043224) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -25,12 +37,13 @@ ActiveRecord::Schema.define(version: 2019_04_12_031035) do
     t.string "name"
     t.text "sub_title"
     t.string "back_image_id"
+    t.string "subheading_a"
     t.text "instruction_a"
     t.string "image_a_id"
+    t.string "subheading_b"
     t.text "instruction_b"
     t.string "image_b_id"
-    t.integer "member_number"
-    t.integer "master_number"
+    t.string "message"
     t.boolean "delete_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,7 +91,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_031035) do
     t.string "name"
     t.string "name_kana"
     t.string "nickname"
-    t.integer "sex"
+    t.integer "sex", limit: 1, default: 0, null: false
     t.integer "birth"
     t.string "image_id"
     t.boolean "delete_flag"

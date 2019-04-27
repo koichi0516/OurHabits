@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :name_kana
       t.string :nickname
-      t.integer :sex
+      t.integer :sex, default: 0, null: false, limit: 1
       t.integer :birth
       t.string :image_id
       t.boolean :delete_flag

@@ -1,34 +1,103 @@
-<h1>user_habits#index</h1>
 <% if flash[:notice] %>
-	<p><%= flash[:notice] %></p>
+	<p class="alert alert-warning"><%= flash[:notice] %></p>
 <% end %>
 
 <div class="container">
 	<div class="row">
 
+		<% if @user_habit.count == 0 %>
 
+		  <h1>OurHabitsへようこそ！</h1>
+		  <h2>「New Challenge!」より、新しく身に付けたい習慣を選択しましょう！</h2>
+		  <h3>※習慣は３つまで登録できます。</h3>
 
-		<div class="col-xs-12">
-		<h1>チャレンジ一覧</h1>
-		<%= link_to "習慣登録一覧画面", habits_path, class: "btn btn-info" %>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>チャレンジ１</th>
-					<th>チャレンジ２</th>
-					<th>チャレンジ３</th>
-				</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<% @user_habit.each do |user_habit| %>
-				<td><%= link_to user_habit.habit.name,user_habit_path(user_habit.id) %>
-					<%= attachment_image_tag user_habit.habit, :back_image, :fill, 230, 230,class:"habit_image" %><br>
-				</td>
-				<% end %>
-			</tr>
-			</tbody>
-		</table>
-		</div>
+		  <div class="accordion">
+        <ul>
+          <li tabindex="1">
+            <div>
+            <%= link_to habit_path(1), class: "" do %>
+            <h2>RUNNNING</h2>
+            <p>Either you run the day, or the day runs you.</p>
+            <% end %>
+            </div>
+          </li>
+          <li tabindex="2">
+            <div>
+            <%= link_to habit_path(2), class: "" do %>
+            <h2>READING</h2>
+            <p>Today a reader, tomorrow a leader.</p>
+            <% end %>
+            </div>
+          </li>
+          <li tabindex="3">
+            <div>
+            <%= link_to habit_path(3), class: "" do %>
+            <h2>WAKE UP</h2>
+            <p>Wake up and be awesome.</p>
+            <% end %>
+            </div>
+          </li>
+          <li tabindex="4">
+            <div>
+            <%= link_to habit_path(6), class: "" do %>
+            <h2>STUDY</h2>
+            <p>Knowledge is power.</p>
+            <% end %>
+            </div>
+          </li>
+          <li tabindex="5">
+            <div>
+            <%= link_to habit_path(7), class: "" do %>
+            <h2>PROGRAMMING</h2>
+            <p>while(!(succeed = try()));</p>
+            <% end %>
+            </div>
+          </li>
+          <li tabindex="6">
+            <div>
+            <%= link_to habit_path(8), class: "" do %>
+            <h2>MUSCLE TRAINING</h2>
+            <p>NO PAIN. NO GAIN.</p>
+            <% end %>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+		<% else %>
+
+		  <h1>My Challenge</h1>
+
+      <% @user_habit.each do |user_habit| %>
+			  <%= link_to user_habit_path(user_habit.id),class: "col-lg-4 ib" do  %>
+
+				  <div class="habit_box">
+					  <%= attachment_image_tag user_habit.habit, :back_image, :fill, 330, 330,class:"habit_image" %><br>
+				  	<%= user_habit.habit.name %>
+				  </div>
+
+	   		<% end %>
+  		<% end %>
+
+		<% end %>
+
 	</div>
+
+	<br>
+
+	<div class="row">
+
+		<div class="col-lg-5">
+		<%= link_to "New Challenge!", habits_path, class: "btn-action" %>
+		</div>
+
+		<div class="col-lg-2">
+		</div>
+
+		<div class="col-lg-5">
+		<%= link_to "My Page",mypage_path(current_user.id), class: "btn-action" %>
+		</div>
+
+	</div>
+
 </div>

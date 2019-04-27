@@ -1,2 +1,39 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="input-form">
+	    		<section id="content">
+
+				<h1>ユーザ詳細</h1>
+
+					<%= link_to user_path(@user.id) do %>
+					<%= attachment_image_tag @user,:image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg", :size => "100x100" %>
+					<% end %>
+					<h3>ユーザ名</h3>
+						<p><%= @user.name %></p>
+					<h3>カナ</h3>
+						<p><%= @user.name_kana %></p>
+					<h3>ニックネーム</h3>
+						<p><%= @user.nickname %></p>
+					<h3>性別</h3>
+						<p>
+						<% if @user.sex == 0 %>
+						男性
+						<% else %>
+						女性
+						<% end %>
+						</p>
+					<h3>生年月日</h3>
+						<p><%= @user.birth.to_s[0..3] %>年<%= @user.birth.to_s[4..5] %>月<%= @user.birth.to_s[6..7] %>日</p>
+					<h3>利用開始日</h3>
+						<p><%= @user.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+
+					<h3><%= link_to "強制退会", user_path(@user),class:"click-danger", method: :delete,data: { confirm: 'このユーザを強制的に退会させますか？'} %></h3>
+
+					<%=link_to "戻る",users_path,class:"click-action" %>
+
+				</section>
+			</div>
+		</div>
+	</div>
+</div>

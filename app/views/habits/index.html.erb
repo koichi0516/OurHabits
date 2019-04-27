@@ -1,5 +1,4 @@
-<h1>Habits#index</h1>
-<p>Find me in app/views/habits/index.html.erb</p>
+<h1>Habits</h1>
 
 <div class="container">
 	<div class="row">
@@ -7,24 +6,20 @@
 		<% @habits.each do |habit| %>
 			<div class="">
 				<%= link_to habit_path(habit), class: "" do %>
-					<div class="habit_box border">
-						<td class="habit_image">
+
+					<div class="habit_box_index border">
+						<div class="habit_image">
 							<%= attachment_image_tag habit, :back_image, :fill, 230, 230,class:"habit_image" %>
-						</td>
-
-						<div class="habit_name">
-							<td><%= habit.name %></td><br>
 						</div>
-
-						<div class="sub_title">
-							<td><%= habit.sub_title %></td><br>
+						<div class="habit_name">
+							<%= habit.name %><br>
 						</div>
 					</div>
+
 				<% end %>
 
 			</div>
 		<% end %>
 
-		<div class="block"></div>
 	</div>
 </div>

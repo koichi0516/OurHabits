@@ -1,0 +1,32 @@
+<% if flash[:notice] %>
+  <p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
+
+<h1>習慣一覧</h1>
+
+<div class="container">
+
+	<div class="row">
+		<% @habits.each do |habit| %>
+			<div>
+				<%= link_to admin_habit_path(habit), class: "" do %>
+					<div class="habit_box_index">
+						<div class="habit_image">
+							<%= attachment_image_tag habit, :back_image, :fill, 230, 230,class:"habit_image" %>
+						</div>
+						<div class="habit_name">
+							<%= habit.name %><br>
+						</div>
+					</div>
+				<% end %>
+
+			</div>
+		<% end %>
+	</div>
+
+	<div class="row">
+	<%=link_to "習慣を追加",new_habit_path,class:"click-action" %>
+	<%=link_to "戻る",admin_home_path,class:"click-action" %>
+	</div>
+
+</div>

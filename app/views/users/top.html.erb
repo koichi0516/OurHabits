@@ -1,2 +1,109 @@
-<h1>Users#top</h1>
-<p>Find me in app/views/users/top.html.erb</p>
+<section class="hero vertical-center">
+  <div class="container text-center">
+    <h1>Our Habits</h1>
+    <h2>「習慣」の力で、これからを変える。</h2>
+  </div>
+  <div class="optional-rainbow"></div>
+
+</section>
+
+<% if flash[:notice] %>
+  <p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
+
+<div class="container">
+
+<br>
+<br>
+<br>
+<br>
+
+    <div class="row">
+
+        <div class="col-xs-6">
+          <%= image_tag'change.jpg',:size => '550x370',class:"habit-image-show-1" %>
+        </div>
+
+        <div class="col-xs-6">
+          <h2>より良い人生を手に入れる。</h2>
+          <br>
+          <div class="top-text">
+          <p>朝の洗顔、外出時の施錠、駅までの道のり、帰宅後の入浴。</p>
+          <p>私たちの生活の約８割は「習慣」によって形成されており、</p>
+          <p>無意識のうちに行動を決定していると言われています。</p>
+          <p>「習慣」が持つ力は強力ですが、この力を利用することで</p>
+          <p>脳を変えることができると最近の研究によって証明されました。</p>
+          <p>自分にとってプラスとなる「習慣」、幸福になれる「習慣」を</p>
+          <p>手に入れて、これからの人生を充実させていきましょう。</p>
+          </div>
+        </div>
+
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+          <div class="top-text">
+          <h2>仲間とともに乗り越える。</h2>
+          <br>
+          <p>「習慣」を得るためには毎日の積み重ねが必須です。</p>
+          <p>しかし、人間の脳は本能的に「変化」を拒むため</p>
+          <p>一人では途中で挫折してしまうことが多々あります。</p>
+          <p>そこで「OurHabits」では、同じ目標を持つ仲間と</p>
+          <p>競い合い、互いに励まし合える環境を用意しました。</p>
+          <p>一人では達成できない目標も、仲間とともに</p>
+          <p>切磋琢磨しながら乗り越えていきましょう。</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <%= image_tag'team.jpg',:size => '550x370',class:"habit-image-show-2" %>
+        </div>
+
+    </div>
+
+<br>
+<br>
+
+<h1>「習慣」の力で、これからを変える。</h1>
+
+<br>
+<br>
+
+  <% if user_signed_in? %>
+
+    <div class="row">
+      <div class="center">
+        <%= link_to "My Challenge", user_habits_path, class: "btn-action faa-float animated" %>
+      </div>
+    </div>
+
+  <% elsif admin_signed_in? %>
+
+  <% else %>
+
+    <div class="row">
+
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-3">
+          <%= link_to "Login",new_user_session_path,class: "btn-action faa-float animated" %>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-3">
+          <%= link_to "Sign Up",new_user_registration_path,class: "btn-action faa-float animated" %>
+        </div>
+        <div class="col-sm-2">
+        </div>
+
+    </div>
+
+  <% end %>
+
+</div>

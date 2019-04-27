@@ -1,39 +1,77 @@
-<div class="container">
+<% if flash[:notice] %>
+<p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
 
-		<% if flash[:notice] %>
-		<p><%= flash[:notice] %></p>
-		<% end %>
+<div class="container">
+	<div class="row">
+		<h1 class="theme-font"><%= link_to @user_habit.habit.name, habit_path(@habit.id) %></h1>
+	</div>
 
 	<div class="row">
 
 		<div class="col-xs-3">
-			<h1><%= link_to @user_habit.habit.name, habit_path(@habit.id), class: "btn btn-success" %></h1>
-			<%= attachment_image_tag @user_habit.habit, :back_image, :fill, 230, 230,class:"habit_image" %>
-			<p>挑戦人数</p><%= @habit.member_number %>
-			<p>達成人数</p><%= @habit.master_number %><br>
 
-			<%= link_to "活動登録",new_user_habit_record_path(@user_habit.id), class: "btn btn-info" %><br>
-			<%= link_to "リスト表示・編集",user_habit_records_path(@user_habit.id), class: "btn btn-info" %><br>
-			<%= link_to "チャット",habit_chats_path(@habit.id), class: "btn btn-info" %><br>
-			<%= link_to "ランキング",rank_path(@habit.id), class: "btn btn-info" %><br>
+			<br>
+
+			<%= attachment_image_tag @user_habit.habit, :back_image, :fill, 270, 270,class:"habit_image" %>
+			<h3 class="fas fa-users"> <%= @user_all %> challengers</h3><br>
+			<h3 class="fas fa-calendar-check"> <%= @my_ranks %> days</h3><br>
+			<h3 class="fas fa-clock"> <%= @my_time_ranks %> min.</h3><br>
+			<h3 class="fas"> ⇨ <%= @my_time_ranks/60 %> hours</h3>
+
+			<br>
+			<br>
+
+			<div class="col-xs-12">
+
+				<div class="col-xs-6">
+				<%= link_to "",new_user_habit_record_path(@user_habit.id), class: "btn-action-select fas fa-check-circle" %>
+				</div>
+
+				<div class="col-xs-6">
+				<%= link_to "",user_habit_records_path(@user_habit.id), class: "btn-action-select fas fa-list" %>
+				</div>
+
+				<br>
+
+				<div class="col-xs-6">
+				<%= link_to "",habit_chats_path(@habit.id), class: "btn-action-select fas fa-comments" %>
+				</div>
+
+				<div class="col-xs-6">
+				<%= link_to "",rank_path(@habit.id), class: "btn-action-select fas fa-crown" %>
+				</div>
+
+			</div>
 		</div>
 
 		<div class="col-xs-9">
+
+		<br>
+
 		<div id="calendar"></div>
 		</div>
 
 	</div>
 
+	<br>
 
 	<div class="row">
-
+	<br>
 	<%= column_chart @record %>
-
 	</div>
 
-	<%= link_to "挑戦を諦める", user_habit_path(@user_habit),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に挑戦を諦めますか?'} %>
+	<br>
 
+	<div class="row">
+		<div class="col-xs-6">
+		<%= link_to "My Challenge",user_habits_path,class:"click-mypage" %>
+		</div>
 
+		<div class="col-xs-6">
+		<%= link_to "Give Up", user_habit_path(@user_habit),class:"click-danger", method: :delete,data: { confirm: '本当に挑戦を諦めますか?'} %>
+		</div>
+	</div>
 
 </div>
 
