@@ -1,6 +1,6 @@
 class CreateUserHabits < ActiveRecord::Migration[5.2]
   def change
-    create_table :user_habits do |t|
+    create_table :user_habits, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.integer :habit_id
       t.integer :user_id
       t.datetime :start_at

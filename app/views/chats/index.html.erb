@@ -22,6 +22,7 @@
 				<%= f.hidden_field :user_id, value:current_user.id %>
 				<%= f.hidden_field :habit_id, value:@habit.id %>
 				<%= f.text_area :text, class:"col-xs-12", required:true %>
+				<p>※50文字まで投稿可。</p>
 				<%= f.submit '投稿する', class:"click-action" %>
 				<% end %>
 			</div>
@@ -37,7 +38,7 @@
 						<th>ニックネーム</th>
 						<th>投稿日時</th>
 						<th>本文</th>
-						<th colspan="1"></th>
+						<th class="width_edit"></th>
 					</tr>
 					</thead>
 
@@ -49,7 +50,7 @@
 						<td class="warning"><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 						<td class="warning"><%= c.text %></td>
 						<% if c.user == current_user %>
-						<td class="success"><%= link_to "編集", edit_habit_chat_path(@habit,c.id),class:"click-green-mini" %></td>
+						<td class="success width_edit"><%= link_to "編集", edit_habit_chat_path(@habit,c.id),class:"click-green-mini" %></td>
 						<% end %>
 					</tr>
 					<% end %>

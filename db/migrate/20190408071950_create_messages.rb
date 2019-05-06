@@ -1,6 +1,6 @@
 class CreateMessages < ActiveRecord::Migration[5.2]
   def change
-    create_table :messages do |t|
+    create_table :messages, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.integer :user_id
       t.string :title
       t.text :body
