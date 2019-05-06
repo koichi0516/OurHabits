@@ -16,7 +16,7 @@
           <li tabindex="1">
             <div>
             <%= link_to habit_path(1), class: "" do %>
-            <h2>RUNNNING</h2>
+            <h2>RUNNING</h2>
             <p>Either you run the day, or the day runs you.</p>
             <% end %>
             </div>
@@ -66,8 +66,8 @@
 
 		<% else %>
 
-		  <h1>My Challenge</h1>
-
+		  <h1 class="theme-font">My Challenge</h1>
+      <br>
       <% @user_habit.each do |user_habit| %>
 			  <%= link_to user_habit_path(user_habit.id),class: "col-lg-4 ib" do  %>
 

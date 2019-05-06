@@ -1,6 +1,6 @@
 z=0
 
-30.times do
+10.times do
 	z+=1
 
 	Message.seed do |s|
