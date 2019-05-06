@@ -3,6 +3,6 @@ class Chat < ApplicationRecord
 	belongs_to :user
 	belongs_to :habit
 
-	validates :text, presence: true
+	validates :text, presence: true, length: { maximum: 50}
 
 end
